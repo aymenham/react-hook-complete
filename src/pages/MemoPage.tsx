@@ -12,6 +12,14 @@ export const MemoPage = () => {
     setCounterTwo((preValue) => preValue + 1);
   };
 
+  const isEven = useMemo(() => {
+    console.log("use memo ");
+    let i = 0;
+
+    while (i < 2000000000) i++;
+    return counterOne % 2 === 0;
+  }, [counterOne]);
+
   return (
     <div className="memo">
       <h2>
@@ -22,7 +30,7 @@ export const MemoPage = () => {
         calculated when needed and not on every render.
       </h2>
       <button onClick={incrementCounterOne}>counter one {counterOne}</button>
-      <p>ici pour checker si le nombre est paire ou impaire </p>
+      <p>{isEven ? "je suis paire" : "je suis impaire "} </p>
       <button onClick={incrementCounterTwo}>counter two {counterTwo}</button>
     </div>
   );

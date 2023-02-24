@@ -7,13 +7,13 @@ export const CallBackPage = () => {
   const [age, setAge] = useState(10);
   const [salary, setSalary] = useState(500);
 
-  const incrementAge = () => {
+  const incrementAge = useCallback(() => {
     setAge(age + 1);
-  };
+  }, [age]);
 
-  const incrementSalary = () => {
+  const incrementSalary = useCallback(() => {
     setSalary(salary + 500);
-  };
+  }, [salary]);
 
   return (
     <div className="callback">
